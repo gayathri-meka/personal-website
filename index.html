@@ -29,8 +29,39 @@
       font-family: Georgia, 'Times New Roman', serif;
       max-width: 640px;
       margin: 0 auto;
-      padding: 80px 28px 120px;
+      padding: 108px 28px 120px;
       line-height: 1.75;
+    }
+
+    /* Top nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: flex-end;
+      gap: 32px;
+      padding: 24px 40px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      z-index: 100;
+    }
+
+    nav a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: none;
+      transition: color 0.15s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--text);
     }
 
     header {
@@ -45,7 +76,7 @@
       margin-bottom: 6px;
     }
 
-    .location {
+    .subtitle {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 0.8rem;
       letter-spacing: 0.1em;
@@ -57,6 +88,16 @@
       border: none;
       border-top: 1px solid var(--rule);
       margin: 40px 0;
+    }
+
+    .section-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 56px;
+      margin-bottom: 20px;
     }
 
     p {
@@ -79,38 +120,148 @@
       border-color: var(--accent);
     }
 
-    footer {
-      margin-top: 72px;
+    /* Pages */
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* Career timeline */
+    .timeline {
+      list-style: none;
+    }
+
+    .timeline li {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 0 20px;
+      padding: 18px 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .timeline li:last-child {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .timeline .years {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 0.78rem;
       color: var(--muted);
+      padding-top: 3px;
+    }
+
+    .timeline .org {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.92rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .timeline .blurb {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .empty-state {
+      color: var(--muted);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.9rem;
+      font-style: italic;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Gayathri Meka</h1>
-    <span class="location">Sunnyvale, CA</span>
-  </header>
+  <nav>
+    <a href="#" class="active" onclick="showPage('home', this)">Home</a>
+    <a href="#" onclick="showPage('built', this)">What I've Built</a>
+    <a href="#" onclick="showPage('writing', this)">Writing</a>
+  </nav>
 
-  <p>
-    Life has carried me through many chapters and many places, each one leaving something behind in how I think and what I care about. The latest stop is Sunnyvale, CA — and the newest chapter is the most personal one yet: I recently became a mom, which has quietly deepened everything I already believed about why the work we do matters.
-  </p>
+  <!-- Home -->
+  <div id="page-home" class="page active">
+    <header>
+      <h1>Gayathri Meka</h1>
+      <span class="subtitle">building things that matter</span>
+    </header>
 
-  <hr />
+    <p>
+      I am deeply committed to creating a positive, meaningful impact in the lives of people. Each of my past experiences has led me to where I am today. I love doing what I do, and I&rsquo;m grateful to be in a position where I can do this.
+    </p>
 
-  <p>
-    I am deeply committed to creating a positive, meaningful impact in the lives of people. Each of my past experiences has led me to where I am today. I love doing what I do, and I&rsquo;m grateful to be in a position where I can do this.
-  </p>
+    <p>
+      I run <a href="https://academy.hyperverge.org" target="_blank" rel="noopener">HyperVerge Academy</a>, a program that upskills young people from under-resourced communities through volunteer mentors and enables them to get a well-paying job in the tech sector.
+    </p>
 
-  <p>
-    I run <a href="https://hyperverge.co/academy" target="_blank" rel="noopener">HyperVerge Academy</a>, a program that upskills young people from under-resourced communities through volunteer mentors and enables them to get a well-paying job in the tech sector.
-  </p>
+    <p>
+      Life has carried me through many chapters and many places, each one leaving something behind in how I think and what I care about. The latest stop is California and the newest chapter is the most personal one yet: I became a mother in Aug 2025, which has deepened everything I already believed about why the work we do matters.
+    </p>
 
-  <footer>
-    gayathrimeka.com
-  </footer>
+    <p class="section-label">Journey</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="years">2020 – 2026</span>
+        <div>
+          <div class="org">HyperVerge Academy</div>
+          <div class="blurb">Building opportunity, one learner at a time — placeholder.</div>
+        </div>
+      </li>
+      <li>
+        <span class="years">2019 – 2020</span>
+        <div>
+          <div class="org">Foundation for Democratic Reforms</div>
+          <div class="blurb">Civic tech and the belief that institutions matter — placeholder.</div>
+        </div>
+      </li>
+      <li>
+        <span class="years">2017 – 2019</span>
+        <div>
+          <div class="org">Goldman Sachs</div>
+          <div class="blurb">First job, learned to think in systems — placeholder.</div>
+        </div>
+      </li>
+      <li>
+        <span class="years">2012 – 2017</span>
+        <div>
+          <div class="org">Indian Institute of Technology Madras</div>
+          <div class="blurb">Where it all began — placeholder.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- What I've Built -->
+  <div id="page-built" class="page">
+    <header>
+      <h1>What I've Built</h1>
+    </header>
+    <p class="empty-state">Projects coming soon.</p>
+  </div>
+
+  <!-- Writing -->
+  <div id="page-writing" class="page">
+    <header>
+      <h1>Writing</h1>
+    </header>
+    <p class="empty-state">Essays coming soon.</p>
+  </div>
+
+  <script>
+    function showPage(name, link) {
+      event.preventDefault();
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      document.getElementById('page-' + name).classList.add('active');
+      link.classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
