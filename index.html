@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gayathri Meka</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>" />
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -123,10 +124,16 @@
     /* Pages */
     .page {
       display: none;
+      animation: fadein 0.2s ease;
     }
 
     .page.active {
       display: block;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     /* Career timeline */
@@ -168,6 +175,167 @@
       line-height: 1.5;
     }
 
+    /* Projects */
+    .project {
+      padding: 32px 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .project:last-of-type {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .project-name {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .project-desc {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 14px;
+      line-height: 1.65;
+    }
+
+    .project-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .project-links a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .project-links a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Video modal */
+    .project-name {
+      cursor: pointer;
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-color: var(--rule);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.15s;
+    }
+
+    .project-name:hover {
+      text-decoration-color: var(--accent);
+    }
+
+    sup a {
+      color: var(--accent);
+      border-bottom: none;
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 2px;
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(43, 41, 38, 0.85);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-inner {
+      position: relative;
+      width: min(480px, 90vw);
+      aspect-ratio: 9/16;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .modal-inner video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-coming-soon {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+    }
+
+    .modal-close:hover {
+      opacity: 1;
+    }
+
+    /* Footnote */
+    .footnotes {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .footnotes p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    sup {
+      font-size: 0.65rem;
+      vertical-align: super;
+      line-height: 0;
+      color: var(--muted);
+    }
+
+    .project-closing {
+      margin-top: 40px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
     .empty-state {
       color: var(--muted);
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -192,15 +360,19 @@
     </header>
 
     <p>
-      I am deeply committed to creating a positive, meaningful impact in the lives of people. Each of my past experiences has led me to where I am today. I love doing what I do, and I&rsquo;m grateful to be in a position where I can do this.
+      I am deeply committed to creating meaningful, positive impact in people&rsquo;s lives. My work is centered on one belief: <span style="color: var(--accent)">where someone starts in life should not determine what they are able to become.</span>
     </p>
 
     <p>
-      I run <a href="https://academy.hyperverge.org" target="_blank" rel="noopener">HyperVerge Academy</a>, a program that upskills young people from under-resourced communities through volunteer mentors and enables them to get a well-paying job in the tech sector.
+      Every experience I&rsquo;ve had has shaped the path that brought me here. I genuinely love the work I do and feel grateful to spend my time on something that matters.
     </p>
 
     <p>
-      Life has carried me through many chapters and many places, each one leaving something behind in how I think and what I care about. The latest stop is California and the newest chapter is the most personal one yet: I became a mother in Aug 2025, which has deepened everything I already believed about why the work we do matters.
+      I built <a href="https://academy.hyperverge.org" target="_blank" rel="noopener">HyperVerge Academy</a> with a passionate team to help young people from under-resourced communities access careers in technology. Through mentorship and structured learning, we support them in building the skills and confidence needed to secure well-paying jobs.
+    </p>
+
+    <p>
+      Life has taken me through many chapters and many places, each one shaping how I think and what I care about. The latest chapter brought me to California, along with the most personal milestone yet: becoming a mother in August 2025. That experience has deepened my conviction that <span style="color: var(--accent)">expanding opportunity for the next generation</span> is some of the most important work we can do.
     </p>
 
     <p class="section-label">Journey</p>
@@ -241,8 +413,84 @@
   <div id="page-built" class="page">
     <header>
       <h1>What I've Built</h1>
+      <span class="subtitle">tools we actually use</span>
     </header>
-    <p class="empty-state">Projects coming soon.</p>
+
+    <p>
+      I studied computer science but spent most of my career in social impact. Over time, I came to believe that <span style="color: var(--accent)">technology alone rarely solves social problems</span> - at best, it amplifies the systems and people already in place.<sup><a href="#fn1">1</a></sup> So we focused on building those systems at HyperVerge Academy.
+    </p>
+
+    <p>
+      <span style="color: var(--accent)">AI agents shifted something.</span> Tools like Claude Code made it possible to spin up small, useful pieces of software and iterate quickly - inside the work we were already doing. What started as curiosity became a steady stream of tools I've built for my work, my family, and myself.
+    </p>
+
+    <p class="section-label">Projects</p>
+
+    <div class="project">
+      <div class="project-name" onclick="openModal('sensai')">SensAI</div>
+      <p class="project-desc">AI-first learning system for HyperVerge Academy. Started as a hackathon project and evolved into the core learning platform for HVA.</p>
+      <div class="project-links">
+        <a href="#" target="_blank">GitHub</a>
+        <a href="#" target="_blank">Link</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-name" onclick="openModal('hvapulse')">HVA Pulse</div>
+      <p class="project-desc">Operating system for HyperVerge Academy. Tracks learner progress, generates insights, and helps our team support learners better.</p>
+      <div class="project-links">
+        <a href="#" target="_blank">GitHub</a>
+        <a href="#" target="_blank">Link</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-name" onclick="openModal('tinytastes')">100 Tiny Tastes</div>
+      <p class="project-desc">A tool I built to track foods while introducing solids to my baby. Still the most useful thing I&rsquo;ve built for myself.</p>
+      <div class="project-links">
+        <a href="https://github.com/gayathri-meka/100-tiny-tastes" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank">Link</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-name" onclick="openModal('ashiana')">Ashiana PG Manager</div>
+      <p class="project-desc">Built for my mother-in-law to replace her handwritten PG ledger with a simple management tool.</p>
+      <div class="project-links">
+        <a href="https://github.com/gayathri-meka/ashiana-pg-manager" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank">Link</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-name" onclick="openModal('getcurious')">Get Curious</div>
+      <p class="project-desc">A personal learning playground. Designed around the way I like to explore and learn new topics. Inspired by my son Nivan.</p>
+      <div class="project-links">
+        <a href="#" target="_blank">GitHub</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-name" onclick="openModal('wonderleaps')">Wonder Leaps</div>
+      <p class="project-desc">A simple parenting app that taught me one of the most important builder lessons: knowing when to stop.</p>
+      <div class="project-links">
+        <a href="https://github.com/gayathri-meka/wonder-leaps" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <p class="project-closing">Except SensAI and HVA Pulse, most of these tools were built quickly, often over a few days or weekends.</p>
+
+    <div class="footnotes">
+      <p id="fn1"><sup>1</sup> This idea is explored in Kentaro Toyama&rsquo;s book <em>Geek Heresy: Rescuing Social Change from the Cult of Technology.</em></p>
+    </div>
+  </div>
+
+  <!-- Video modal -->
+  <div class="modal-overlay" id="videoModal" onclick="closeModalOnOverlay(event)">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modalContent" class="modal-coming-soon">Video coming soon</div>
+    </div>
   </div>
 
   <!-- Writing -->
@@ -261,6 +509,42 @@
       document.getElementById('page-' + name).classList.add('active');
       link.classList.add('active');
     }
+
+    // Video sources — add file paths here when ready
+    const videos = {
+      sensai:     null,
+      hvapulse:   null,
+      tinytastes: '100tt-demo-video.mp4',
+      ashiana:    null,
+      getcurious: null,
+      wonderleaps: null,
+    };
+
+    function openModal(id) {
+      const src = videos[id];
+      const content = document.getElementById('modalContent');
+      if (src) {
+        content.innerHTML = `<video src="${src}" autoplay loop muted playsinline></video>`;
+        content.className = '';
+      } else {
+        content.innerHTML = 'Video coming soon';
+        content.className = 'modal-coming-soon';
+      }
+      document.getElementById('videoModal').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('videoModal').classList.remove('open');
+      document.getElementById('modalContent').innerHTML = '';
+    }
+
+    function closeModalOnOverlay(e) {
+      if (e.target === document.getElementById('videoModal')) closeModal();
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
   </script>
 
 </body>
