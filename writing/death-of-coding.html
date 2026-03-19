@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Death of Coding - Gayathri Meka</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:        #F7F5F0;
+      --text:      #2B2926;
+      --muted:     #7A7570;
+      --accent:    #6B8C72;
+      --rule:      #DDD9D2;
+      --toc-width: 220px;
+      --content-max: 680px;
+    }
+
+    html {
+      font-size: 18px;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      line-height: 1.8;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 32px;
+      padding: 24px 40px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      z-index: 100;
+    }
+
+    nav a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .mobile-menu a:hover { color: var(--text); }
+
+    /* Layout */
+    .essay-layout {
+      display: flex;
+      align-items: flex-start;
+      max-width: calc(var(--toc-width) + var(--content-max) + 80px);
+      margin: 0 auto;
+      padding: 120px 40px 120px;
+      gap: 60px;
+    }
+
+    /* TOC sidebar */
+    .toc {
+      flex: 0 0 var(--toc-width);
+      position: sticky;
+      top: 92px;
+      max-height: calc(100vh - 112px);
+      overflow-y: auto;
+    }
+
+    .toc-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .toc ol {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .toc a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: var(--muted);
+      text-decoration: none;
+      display: block;
+      padding: 4px 0 4px 10px;
+      border-left: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .toc a:hover { color: var(--text); }
+
+    .toc a.active {
+      color: var(--text);
+      border-left-color: var(--accent);
+    }
+
+    .toc-back {
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      text-decoration: none;
+      margin-top: 32px;
+      padding-top: 96px;
+      border-top: 1px solid var(--rule);
+      transition: color 0.15s;
+    }
+
+    .toc-back:hover { color: var(--text); }
+
+    /* Article */
+    article {
+      flex: 1;
+      min-width: 0;
+      max-width: var(--content-max);
+    }
+
+    .essay-header {
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .essay-header h1 {
+      font-size: 2rem;
+      font-weight: normal;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .essay-header .essay-subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* Body copy */
+    .essay-body h2 {
+      font-size: 1.15rem;
+      font-weight: normal;
+      letter-spacing: -0.01em;
+      color: var(--accent);
+      margin-top: 56px;
+      margin-bottom: 20px;
+      scroll-margin-top: 100px;
+    }
+
+    .essay-body h3 {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: #A07868;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      scroll-margin-top: 100px;
+    }
+
+    .essay-body p {
+      margin-bottom: 1.5em;
+      color: var(--text);
+    }
+
+    .essay-body p:last-child { margin-bottom: 0; }
+
+    .essay-body a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color 0.15s;
+    }
+
+    .essay-body a:hover { border-color: var(--accent); }
+
+    .skill-list {
+      list-style: none;
+      margin: 0 0 1.5em 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .skill-list li {
+      padding-left: 16px;
+      border-left: 2px solid var(--rule);
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .pullquote {
+      padding-left: 16px;
+      border-left: 2px solid var(--accent);
+      color: var(--accent) !important;
+      margin: 1.8em 0;
+    }
+
+    .skill-list strong {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      display: block;
+      margin-bottom: 2px;
+      color: var(--text);
+    }
+
+    /* Mobile */
+    @media (max-width: 860px) {
+      .toc { display: none; }
+
+      .essay-layout {
+        padding: 100px 24px 80px;
+        gap: 0;
+      }
+
+      .essay-header h1 { font-size: 1.6rem; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 20px 24px; }
+      nav a:not(.hamburger) { display: none; }
+      .hamburger { display: flex; }
+      .essay-layout { padding: 88px 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../index.html" onclick="sessionStorage.setItem('page','built')">What I've Built</a>
+    <a href="../index.html" onclick="sessionStorage.setItem('page','writing')" class="active">Writing</a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html" onclick="toggleMenu()">Home</a>
+    <a href="../index.html" onclick="sessionStorage.setItem('page','built'); toggleMenu()">What I've Built</a>
+    <a href="../index.html" onclick="sessionStorage.setItem('page','writing'); toggleMenu()" class="active">Writing</a>
+  </div>
+
+  <div class="essay-layout">
+
+    <aside class="toc" aria-label="Table of contents">
+      <p class="toc-label">Contents</p>
+      <ol>
+        <li><a href="#what-is-changing">What is actually changing</a></li>
+        <li><a href="#multiplication">The multiplication table problem</a></li>
+        <li><a href="#opportunity">The opportunity argument</a></li>
+        <li><a href="#counterarguments">The counterarguments</a></li>
+        <li><a href="#training-for">What we are actually training for</a></li>
+        <li><a href="#what-comes-next">A note on what comes next</a></li>
+      </ol>
+      <a class="toc-back" href="../index.html" onclick="sessionStorage.setItem('page','writing')">&#8592; All essays</a>
+    </aside>
+
+    <article>
+      <header class="essay-header">
+        <h1>Death of Coding</h1>
+        <p class="essay-subtitle">And why it might be a good thing after all</p>
+      </header>
+
+      <div class="essay-body">
+
+        <p>For two decades, the ability to write software has been treated as a rare and valuable skill - a gatekeeper to some of the most well-paid, intellectually stimulating work in the modern economy. Learning to code was the advice given to students, career changers, and entire nations looking to participate in the digital economy. The logic was simple: software is eating the world, and the people who write software will eat well.</p>
+
+        <p>That logic has not disappeared. But it is being rapidly renegotiated by AI. This essay argues that the decline of coding as a gatekeeping skill is not a loss - it is an opening. And that opening has the potential to be particularly significant for learners who have historically been locked out of the technology economy.</p>
+
+        <h2 id="what-is-changing">What is actually changing</h2>
+
+        <p>AI tools like Claude Code can now write functional software from structured instructions. A person who can clearly describe a problem, break it into logical steps, and evaluate whether the output works can now produce software that would previously have required months of learning syntax, debugging, and language-specific knowledge.</p>
+
+        <p>This does not mean all coding is disappearing. Engineers working on complex systems, novel algorithms, performance-critical infrastructure, or security-sensitive code still require deep technical knowledge. What is changing is the layer below that - the vast middle territory of software that needs to be built, but does not require elite engineering to build: the college managing admissions on Excel, the clinic scheduling patients over WhatsApp, the small manufacturer with no inventory system, the NGO reconciling donations on a shared spreadsheet.</p>
+
+        <p>The skills that are gaining value in this new environment look something like this:</p>
+
+        <ul class="skill-list">
+          <li><strong>Software mental models</strong> Understanding what software is, how client and server interact, what databases and APIs do, and how data flows through a system to produce an output.</li>
+          <li><strong>Product thinking</strong> Identifying real problems, understanding who has them, breaking a task into logical steps, and evaluating whether a solution actually works.</li>
+          <li><strong>AI-native development</strong> Giving structured tasks to AI agents, asking them to explore a codebase, running iterative improvement cycles, and decomposing complex work into smaller prompts.</li>
+          <li><strong>System integration</strong> Connecting services through authentication, databases, AI APIs, and automation workflows.</li>
+          <li><strong>Operating software</strong> Reading errors and logs, deploying applications, debugging with AI assistance, and maintaining basic security hygiene.</li>
+        </ul>
+
+        <p>None of these are trivial. But none of them require knowing how to write a recursive function in JavaScript.</p>
+
+        <h2 id="multiplication">The multiplication table problem</h2>
+
+        <p>A useful analogy comes from mathematics education. Should children learn multiplication tables if calculators exist? Most educators say yes - not because the child will spend their life doing mental arithmetic, but because understanding multiplication builds the cognitive scaffolding to use calculators intelligently, catch errors, and think numerically.</p>
+
+        <p>The equivalent in programming is computational thinking: understanding what a variable is, how a loop works, what happens when a system encounters an error, what it means for something to have state. These concepts can be taught through light Python programming in weeks. They do not require six months of JavaScript.</p>
+
+        <p>The distinction matters because curriculum time is finite. Every hour spent on JS syntax is an hour not spent on systems thinking, product reasoning, or AI-native development - skills that compound more directly into real-world value for most learners. Python earns its place because it teaches computational thinking with minimal syntactic overhead. JavaScript, for most learners not aiming at frontend development specifically, is legacy importance dressed up as current importance.</p>
+
+        <h2 id="opportunity">The opportunity argument</h2>
+
+        <p>The intuitive fear about AI is that it will get better at everything, squeeze humans into a shrinking set of tasks, and drive wages down. That fear is not unreasonable in the long run. But it misses something important about where we are right now.</p>
+
+        <p>AI has real limitations today - cost, context, trust, and the kind of on-the-ground human relationships that software adoption actually requires. In many settings, a skilled human builder who understands the local problem is genuinely cheaper and more effective than an AI-led solution. This is the window.</p>
+
+        <p>And the window sits on top of an enormous unmet need. India alone has tens of thousands of institutions running on spreadsheets, WhatsApp, pen and paper, and institutional memory. The problem was never that this software was hard to build. It was that the economics did not work. A custom operations system for one mid-size college was not worth six months of an engineer's time. It might be worth three weeks of someone who can direct AI agents well, understands the user's actual workflow, and can iterate fast.</p>
+
+        <p>AI compresses the build cost dramatically. It makes previously uneconomical software suddenly viable. And the person who captures that value is not necessarily the best coder - it is the person closest to the problem who can translate messy human workflows into working systems.</p>
+
+        <h2 id="counterarguments">The counterarguments</h2>
+
+        <p>The optimistic case above needs to be stress-tested. Here are the most serious objections, and an honest assessment of each.</p>
+
+        <h3>1. The skill floor may be higher than it appears</h3>
+
+        <p>Even with powerful AI tools, effective builders still need system thinking, debugging ability, architecture decisions, and understanding of data and security. These are not trivial. If they remain hard to acquire, particularly for learners with weak educational foundations, the new barrier may simply be a different barrier, not a lower one.</p>
+
+        <p>Two things are worth saying here. The purely technical skills - architecture decisions, debugging complex systems, understanding security - are being abstracted away by AI faster than most people expect. The floor on those is falling.</p>
+
+        <p>But the other half of the skill set - identifying real problems, understanding users, knowing whether what you built actually solves anything - still requires a human in the loop. AI can help with all of it, but only if someone is asking the right questions in the first place. And knowing what questions to ask comes from being close to the problem. These skills are also not learned in a classroom - they are learned by building real things for real people. That kind of learning is arguably more accessible to someone who grew up navigating real-world constraints than to someone who spent years in an academic environment disconnected from them.</p>
+
+        <h3>2. Experienced engineers using AI may simply outcompete juniors</h3>
+
+        <p>AI raises the productivity of existing engineers, which may reduce demand for junior builders rather than creating new roles for them. The market might decide that ten senior engineers with AI are more valuable than fifty junior AI builders.</p>
+
+        <p>This is likely true in certain product contexts - fast-moving startups, technically complex systems, frontier software. It is much less true in the long tail of institutional and local software described earlier. Senior engineers in Bangalore or Mumbai are not competing for the contract to rebuild a small college's admissions workflow in Nagpur. That market has no incumbent. The question is whether someone trained in AI-native development can get there and deliver something that works.</p>
+
+        <h3>3. The role could commoditize before it stabilizes</h3>
+
+        <p>If directing AI agents becomes easy, the market could be flooded with builders, driving down wages to gig-economy levels. No-code platforms have already experienced this dynamic - initial excitement, then commoditization, then a race to the bottom on price.</p>
+
+        <p>The honest response is: this is a real risk, and it depends heavily on whether learners develop genuine product judgment or merely surface-level prompting ability. The difference between someone who can prompt an AI to generate a form and someone who can design an end-to-end workflow that a college admin will actually use every day is enormous. The former commoditizes. The latter does not. The curriculum design question is which of those two people you are producing.</p>
+
+        <h3>4. Structural barriers persist beyond the technical</h3>
+
+        <p>Even if the technical barrier drops, disadvantaged learners may still face weak professional networks, limited English proficiency, and restricted access to real business problems to solve. These factors often matter as much as technical skill in securing work.</p>
+
+        <p>This is true and important. It means the training program cannot only teach technical skills - it must also build the surrounding infrastructure: access to real clients, mentorship, portfolio development, and commercial pathways. A learner who can build but cannot find, pitch, and close work is not economically independent. The services business model described in this essay - a studio or apprenticeship structure where learners work on real projects under guidance - is partly an answer to this problem. It embeds the commercial layer into the learning experience rather than leaving it as something learners must figure out alone afterward.</p>
+
+        <h3>5. The cost of AI tools is not trivial</h3>
+
+        <p>A Claude Code subscription costs $20 a month - not cheap for a learner from a disadvantaged background in India. Stack that with hosting, APIs, and other tools, and the cost of entry starts to add up. This is a real barrier, not a theoretical one.</p>
+
+        <p>First, constraints breed resourcefulness. Some of the most creative builders have come out of environments where they had to do more with less - and a scrappy approach to tooling is not necessarily a disadvantage. Second, AI pricing is almost certainly going the way of the internet and cloud computing - expensive and inaccessible at first, then cheap enough to take for granted. The $20 subscription of today will likely look like the cost of a SIM card in a few years. In the meantime, training programs that are serious about this population need to invest in tool access - it is as fundamental as providing a laptop.</p>
+
+        <h3>6. Do we even need this software?</h3>
+
+        <p>Things are working without it. Colleges are admitting students, clinics are seeing patients, businesses are running. If spreadsheets and WhatsApp were genuinely broken, someone would have fixed them already. Maybe the demand for this software is not as large as this essay assumes.</p>
+
+        <p>This is worth taking seriously. Technology is not a solution to every problem. A college with poor governance does not become well-governed because it has better software. Sometimes the real problem is misaligned incentives, weak leadership, or cultural inertia - and no amount of tooling fixes that.</p>
+
+        <p>But working and working well are different things. The question is not whether these institutions are surviving - it is whether better software would free up meaningful time, reduce errors, or open up new possibilities. There are cases where the bottleneck genuinely is operational - where the problem is not will but friction. A clinic that loses patient records because they live in a physical file somewhere. A housing society where the treasurer spends two weekends a month reconciling maintenance payments by hand. A coaching centre that cannot tell which students are falling behind until it is too late. In these cases, the people inside already know something is broken. They just never had anyone affordable enough to ask.</p>
+
+        <h2 id="training-for">What we are actually training for</h2>
+
+        <p>Strip away the technology for a moment, and the profile of the person this model is trying to produce looks like this: someone who can identify a real problem, reason about the system needed to solve it, direct tools to build that system, and take ownership of whether it works.</p>
+
+        <p>These are not new skills. They are the skills of a good product manager, a thoughtful consultant, and a resourceful operator. What is new is that the tools available to a person with those skills have become dramatically more powerful. A person who previously needed a team of engineers to bring an idea to life can now do it largely alone, or with a small, lean team.</p>
+
+        <p class="pullquote">The death of coding as a gatekeeper is not the death of building. It is the democratization of building.</p>
+
+        <p>For learners from disadvantaged backgrounds, this is a genuine shift in the economics of entry. The traditional path into the technology economy required years of formal education, strong mathematical foundations, and access to elite networks. That path is not going away - but it is no longer the only path.</p>
+
+        <p>The new path requires different things: practical problem-solving ability, persistence in the face of systems that break, comfort learning independently, strong enough English to read documentation and communicate with AI, and the product judgment to know whether what you built actually solves the problem. These are not equally distributed across privilege - but they are distributed differently than academic credentials. That difference matters.</p>
+
+        <h2 id="what-comes-next">A note on what comes next</h2>
+
+        <p>There is a services business waiting to be built around this model, one that connects AI-native builders to the enormous backlog of institutional software that nobody has had the economics to commission. The unit economics work differently than traditional IT services: lower build cost, faster iteration, outcomes-based pricing. The bottleneck is not the technology. It is building the pipeline from learner to client, and the judgment layer that ensures what gets built actually works.</p>
+
+        <p>That is the harder problem. But it is the right problem to be working on.</p>
+
+      </div>
+    </article>
+
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.querySelector('.hamburger').classList.toggle('open');
+    }
+
+    // Active TOC section on scroll
+    const sections = document.querySelectorAll('.essay-body h2[id]');
+    const tocLinks = document.querySelectorAll('.toc a[href^="#"]');
+
+    function updateActiveToc() {
+      let current = null;
+      sections.forEach(section => {
+        if (section.getBoundingClientRect().top <= 120) current = section.id;
+      });
+      tocLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveToc, { passive: true });
+    updateActiveToc();
+
+    tocLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        const target = document.getElementById(link.getAttribute('href').slice(1));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+
+</body>
+</html>

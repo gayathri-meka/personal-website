@@ -425,6 +425,51 @@
       font-size: 0.9rem;
       font-style: italic;
     }
+
+    /* Essay listing */
+    .essay-list {
+      list-style: none;
+    }
+
+    .essay-item {
+      padding: 28px 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .essay-item:last-child {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .essay-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.05rem;
+      font-weight: normal;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color 0.15s;
+    }
+
+    .essay-title:hover {
+      border-color: var(--accent);
+    }
+
+    .essay-subtitle {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+
+    .essay-meta {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -559,7 +604,7 @@
 
     <div class="project">
       <div class="project-name">Wonder Leaps</div>
-      <p class="project-desc">Wonder Leaps started with a simple need: I wanted something that would tell me when Nivan was likely going through a growth spurt and what activities I could do with him to support his development. There are great free apps that already solve this &mdash; but they all felt like too much. Videos, detailed tracking, endless notifications. As a new parent with a very energetic baby, I didn&rsquo;t have time for any of that. I wanted something almost like a document &mdash; clean, focused, just the essentials, but slightly more interactive. I built it, it solved my problem, and I stopped. No bells and whistles needed. Knowing when to ship and when to step back is a lesson I keep learning.</p>
+      <p class="project-desc">Wonder Leaps started with a simple need: I wanted something that would tell me when Nivan was likely going through a growth spurt and what activities I could do with him to support his development. There are great free apps that already solve this, but they all felt like too much. Videos, detailed tracking, endless notifications. As a new parent with a very energetic baby, I didn&rsquo;t have time for any of that. I wanted something almost like a document - clean, focused, just the essentials, but slightly more interactive. I built it, it solved my problem, and I stopped. No bells and whistles needed. Knowing when to ship and when to step back is a lesson I keep learning.</p>
       <div class="project-links">
         <a href="https://github.com/gayathri-meka/wonder-leaps" target="_blank" rel="noopener">GitHub</a>
         <a href="https://wonder-leaps.vercel.app" target="_blank" rel="noopener">Live</a>
@@ -577,20 +622,39 @@
   <div id="page-writing" class="page">
     <header>
       <h1>Writing</h1>
+      <span class="subtitle">essays on things I keep thinking about</span>
     </header>
-    <p class="empty-state">Essays coming soon.</p>
+
+    <ul class="essay-list">
+      <li class="essay-item">
+        <a class="essay-title" href="writing/death-of-coding.html">Death of Coding</a>
+        <p class="essay-subtitle">And why it might be a good thing after all</p>
+      </li>
+    </ul>
   </div>
 
   <script>
-    function showPage(name, link) {
-      event.preventDefault();
+    function activatePage(name) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('nav a, .mobile-menu a').forEach(a => a.classList.remove('active'));
       document.getElementById('page-' + name).classList.add('active');
-      // Mark matching links active in both nav and mobile menu
       document.querySelectorAll(`nav a[onclick*="'${name}'"], .mobile-menu a[onclick*="'${name}'"]`)
         .forEach(a => a.classList.add('active'));
     }
+
+    function showPage(name, link) {
+      event.preventDefault();
+      activatePage(name);
+    }
+
+    // Restore page from sessionStorage (e.g. when navigating back from an essay)
+    (function() {
+      const page = sessionStorage.getItem('page');
+      if (page) {
+        sessionStorage.removeItem('page');
+        activatePage(page);
+      }
+    })();
 
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('open');
