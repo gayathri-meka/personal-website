@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I will come back - Gayathri Meka</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:        #F7F5F0;
+      --text:      #2B2926;
+      --muted:     #7A7570;
+      --accent:    #6B8C72;
+      --rule:      #DDD9D2;
+      --toc-width: 220px;
+      --content-max: 680px;
+    }
+
+    html {
+      font-size: 18px;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      line-height: 1.8;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 32px;
+      padding: 24px 40px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      z-index: 100;
+    }
+
+    nav a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .mobile-menu a:hover { color: var(--text); }
+
+    /* Layout */
+    .essay-layout {
+      display: flex;
+      align-items: flex-start;
+      max-width: calc(var(--toc-width) + var(--content-max) + 80px);
+      margin: 0 auto;
+      padding: 120px 40px 120px;
+      gap: 60px;
+    }
+
+    /* TOC sidebar */
+    .toc {
+      flex: 0 0 var(--toc-width);
+      position: sticky;
+      top: 92px;
+      max-height: calc(100vh - 112px);
+      overflow-y: auto;
+    }
+
+    .toc-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .toc ol {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .toc a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: var(--muted);
+      text-decoration: none;
+      display: block;
+      padding: 4px 0 4px 10px;
+      border-left: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .toc a:hover { color: var(--text); }
+
+    .toc a.active {
+      color: var(--text);
+      border-left-color: var(--accent);
+    }
+
+    .toc-back {
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      text-decoration: none;
+      margin-top: 32px;
+      padding-top: 96px;
+      border-top: 1px solid var(--rule);
+      transition: color 0.15s;
+    }
+
+    .toc-back:hover { color: var(--text); }
+
+    /* Article */
+    article {
+      flex: 1;
+      min-width: 0;
+      max-width: var(--content-max);
+    }
+
+    .essay-header {
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .essay-header h1 {
+      font-size: 2rem;
+      font-weight: normal;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .essay-header .essay-subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* Body copy */
+    .essay-body h2 {
+      font-size: 1.15rem;
+      font-weight: normal;
+      letter-spacing: -0.01em;
+      color: var(--accent);
+      margin-top: 56px;
+      margin-bottom: 20px;
+      scroll-margin-top: 100px;
+    }
+
+    .essay-body p {
+      margin-bottom: 1.5em;
+      color: var(--text);
+    }
+
+    .essay-body p:last-child { margin-bottom: 0; }
+
+    .essay-body a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color 0.15s;
+    }
+
+    .essay-body a:hover { border-color: var(--accent); }
+
+    .essay-body em {
+      font-style: italic;
+    }
+
+    .pullquote {
+      padding-left: 16px;
+      border-left: 2px solid var(--accent);
+      color: var(--accent) !important;
+      margin: 1.8em 0;
+    }
+
+    /* Mobile */
+    @media (max-width: 860px) {
+      .toc { display: none; }
+
+      .essay-layout {
+        padding: 100px 24px 80px;
+        gap: 0;
+      }
+
+      .essay-header h1 { font-size: 1.6rem; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 20px 24px; }
+      nav a:not(.hamburger) { display: none; }
+      .hamburger { display: flex; }
+      .essay-layout { padding: 88px 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../index.html" onclick="sessionStorage.setItem('page','built')">What I've Built</a>
+    <a href="../index.html" onclick="sessionStorage.setItem('page','writing')" class="active">Writing</a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html" onclick="toggleMenu()">Home</a>
+    <a href="../index.html" onclick="sessionStorage.setItem('page','built'); toggleMenu()">What I've Built</a>
+    <a href="../index.html" onclick="sessionStorage.setItem('page','writing'); toggleMenu()" class="active">Writing</a>
+  </div>
+
+  <div class="essay-layout">
+
+    <aside class="toc" aria-label="Table of contents">
+      <p class="toc-label">Contents</p>
+      <ol>
+        <li><a href="#object-permanence">Object permanence</a></li>
+        <li><a href="#rupture-and-repair">Rupture and repair</a></li>
+        <li><a href="#vatsalya">Vatsalya bhava</a></li>
+        <li><a href="#the-room">The room</a></li>
+      </ol>
+      <a class="toc-back" href="../index.html" onclick="sessionStorage.setItem('page','writing')">&#8592; All essays</a>
+    </aside>
+
+    <article>
+      <header class="essay-header">
+        <h1>I will come back</h1>
+        <p class="essay-subtitle">On attachment, absence, and the thing I need to keep hearing</p>
+      </header>
+
+      <div class="essay-body">
+
+        <p>He cries when I leave. Not a soft, confused cry &mdash; a vigorous, full-bodied protest that sounds like something is truly wrong. One day he protested in the car seat. I couldn't stop immediately. When I eventually did, and picked him up, he went quiet. Stopped making eye contact. The first time I saw that silence, I thought I had broken something.</p>
+
+        <h2 id="object-permanence">Object permanence</h2>
+
+        <p>Around seven months, a baby's brain develops the capacity for object permanence &mdash; the knowledge that things exist even when they can't be seen. It sounds like a small milestone, but it isn't. It means he now knows I exist when I'm gone. He holds me in his mind. But his mind has no concept of time, no framework for return. He knows I exist. He just doesn't know I'll come back.</p>
+
+        <p>The crying is his whole self saying: <em>you matter, and I don't know if this ends.</em></p>
+
+        <h2 id="rupture-and-repair">Rupture and repair</h2>
+
+        <p>What I didn't expect is that this is also, precisely, the mechanism by which he will become secure. Not through my continuous presence &mdash; that is not sustainable. But through repetition. Through rupture and repair, over and over, until the pattern becomes knowledge. Each time I leave and return, I am teaching him something his mind cannot yet hold abstractly: <em>she comes back.</em> He cannot understand the concept of time. But he can accumulate evidence. Goodbye after goodbye, return after return, the body begins to believe what the mind cannot yet grasp &mdash; that love is not a finite thing, that absence is not abandonment, that the one who leaves is also the one who returns.</p>
+
+        <h2 id="vatsalya">Vatsalya bhava</h2>
+
+        <p>In the Bhakti tradition, <em>vatsalya bhava</em> &mdash; the devotional love between mother and child &mdash; is considered one of the most intimate forms of relating to the divine. Krishna and Yashoda are the archetypal image: the crying child, the mother who returns, the reunion that is itself sacred. Ayurveda's ancient texts spoke of the mother's presence &mdash; her smell, her voice, her warmth &mdash; as medicine. Not metaphorically. As literal regulators of the child's constitution. The Upanishads offer that the nature of the self is <em>ananda</em>, bliss, and that the pull toward the source of love is not weakness but the deepest intelligence of consciousness.</p>
+
+        <p>The vigorous, full-hearted protest &mdash; the crying that sounds like pain &mdash; is evidence that the attachment is working. His distress is his love made audible.</p>
+
+        <h2 id="the-room">The room</h2>
+
+        <p>Which makes it all the more difficult for me to walk away and sit in this room. This room which has ironically become the image of my ambition &mdash; a place where I can sit and work, where I try to be more than a "just a mother". And when I sit here, locked in, hearing him cry on the other side, I ask myself why I'm doing this. Why am I going against my natural instinct?</p>
+
+        <p>Then I remind myself again that my continuous presence is not sustainable. Irrespective of whether I'm a working mom or a stay-at-home mom, he needs to learn. Rupture and repair, over and over. For him. For me.</p>
+
+        <p class="pullquote">I am going now. But I will come back.</p>
+
+      </div>
+    </article>
+
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.querySelector('.hamburger').classList.toggle('open');
+    }
+
+    // Active TOC section on scroll
+    const sections = document.querySelectorAll('.essay-body h2[id]');
+    const tocLinks = document.querySelectorAll('.toc a[href^="#"]');
+
+    function updateActiveToc() {
+      let current = null;
+      sections.forEach(section => {
+        if (section.getBoundingClientRect().top <= 120) current = section.id;
+      });
+      tocLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveToc, { passive: true });
+    updateActiveToc();
+
+    tocLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        const target = document.getElementById(link.getAttribute('href').slice(1));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+
+</body>
+</html>
