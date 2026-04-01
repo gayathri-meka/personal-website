@@ -170,9 +170,8 @@
       letter-spacing: 0.06em;
       color: var(--muted);
       text-decoration: none;
-      margin-top: 32px;
-      padding-top: 96px;
-      border-top: 1px solid var(--rule);
+      margin-top: 120px;
+      padding-top: 24px;
       transition: color 0.15s;
     }
 
@@ -292,11 +291,14 @@
 
     @media (max-width: 600px) {
       nav { padding: 20px 24px; }
-      nav a:not(.hamburger) { display: none; }
+      nav a:not(.hamburger),
+      nav .theme-picker { display: none; }
       .hamburger { display: flex; }
       .essay-layout { padding: 88px 20px 80px; }
     }
   </style>
+  <link rel="stylesheet" href="../styles/themes.css">
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})()</script>
 </head>
 <body>
 
@@ -304,6 +306,14 @@
     <a href="../index.html">Home</a>
     <a href="../index.html" onclick="sessionStorage.setItem('page','built')">What I've Built</a>
     <a href="../index.html" onclick="sessionStorage.setItem('page','writing')" class="active">Writing</a>
+    <div class="theme-picker" id="themePicker">
+      <button class="theme-tab" id="themeTab" aria-label="Change theme">Theme</button>
+      <div class="theme-options">
+        <button class="swatch" data-theme="simple">simple</button>
+        <button class="swatch" data-theme="playful">playful</button>
+        <button class="swatch" data-theme="loud">loud</button>
+      </div>
+    </div>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -313,6 +323,11 @@
     <a href="../index.html" onclick="toggleMenu()">Home</a>
     <a href="../index.html" onclick="sessionStorage.setItem('page','built'); toggleMenu()">What I've Built</a>
     <a href="../index.html" onclick="sessionStorage.setItem('page','writing'); toggleMenu()" class="active">Writing</a>
+    <div class="mobile-theme-row">
+      <button class="swatch" data-theme="simple">simple</button>
+      <button class="swatch" data-theme="playful">playful</button>
+      <button class="swatch" data-theme="loud">loud</button>
+    </div>
   </div>
 
   <div class="essay-layout">
@@ -475,6 +490,8 @@
       });
     });
   </script>
+
+  <script src="../scripts/theme.js"></script>
 
 </body>
 </html>

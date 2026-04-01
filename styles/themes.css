@@ -1,0 +1,433 @@
+/* ================================================
+   Themes — gayathrimeka.com
+   ================================================ */
+
+/* ── Simple (default) ─────────────────────────── */
+html[data-theme="simple"],
+html:not([data-theme]) {
+  --bg:     #F7F5F0;
+  --text:   #2B2926;
+  --muted:  #7A7570;
+  --accent: #6B8C72;
+  --rule:   #DDD9D2;
+}
+
+/* ── Playful ──────────────────────────────────── */
+html[data-theme="playful"] {
+  --bg:     #FFF9F0;
+  --text:   #1A1A1A;
+  --muted:  #888888;
+  --accent: #FF6B6B;
+  --rule:   #FFD0CA;
+}
+
+/* Dot-grid background */
+html[data-theme="playful"] body {
+  background-image: radial-gradient(circle, rgba(255, 107, 107, 0.12) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* Nav */
+html[data-theme="playful"] nav a:nth-child(1) { color: #FF6B6B; }
+html[data-theme="playful"] nav a:nth-child(2) { color: #FB923C; }
+html[data-theme="playful"] nav a:nth-child(3) { color: #A855F7; }
+html[data-theme="playful"] nav { border-bottom-color: var(--rule); }
+
+/* Index - section headings (Caveat loaded dynamically) */
+html[data-theme="playful"] .page header h1 {
+  font-family: 'Caveat', cursive;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #FF6B6B;
+}
+html[data-theme="playful"] .page header h1::after {
+  content: ' ✦';
+  color: #4ECDC4;
+  font-size: 0.75em;
+  vertical-align: middle;
+}
+
+html[data-theme="playful"] .section-label { color: #EC4899; font-weight: 600; }
+
+/* Index - timeline */
+html[data-theme="playful"] .timeline .org   { color: #4ECDC4; }
+html[data-theme="playful"] .timeline .years { color: #A855F7; }
+html[data-theme="playful"] .timeline li            { border-top-style: dashed; }
+html[data-theme="playful"] .timeline li:last-child { border-bottom-style: dashed; }
+html[data-theme="playful"] .timeline li:nth-child(1) { border-top-color: #FF6B6B; }
+html[data-theme="playful"] .timeline li:nth-child(2) { border-top-color: #4ECDC4; }
+html[data-theme="playful"] .timeline li:nth-child(3) { border-top-color: #A855F7; }
+html[data-theme="playful"] .timeline li:nth-child(4) { border-top-color: #FB923C; }
+
+/* Index - project cards (colorful left bar, no dividers) */
+html[data-theme="playful"] .project {
+  border-top: none;
+  border-left: 3px solid;
+  padding-left: 18px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+html[data-theme="playful"] .project:last-of-type { border-bottom: none; }
+html[data-theme="playful"] .project:nth-of-type(1) { border-left-color: #FF6B6B; }
+html[data-theme="playful"] .project:nth-of-type(2) { border-left-color: #4ECDC4; }
+html[data-theme="playful"] .project:nth-of-type(3) { border-left-color: #A855F7; }
+html[data-theme="playful"] .project:nth-of-type(4) { border-left-color: #FB923C; }
+html[data-theme="playful"] .project:nth-of-type(5) { border-left-color: #EC4899; }
+html[data-theme="playful"] .project:nth-of-type(6) { border-left-color: #22C55E; }
+
+html[data-theme="playful"] .project-name {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+html[data-theme="playful"] .project:nth-of-type(1) .project-name { color: #FF6B6B !important; }
+html[data-theme="playful"] .project:nth-of-type(2) .project-name { color: #4ECDC4 !important; }
+html[data-theme="playful"] .project:nth-of-type(3) .project-name { color: #A855F7 !important; }
+html[data-theme="playful"] .project:nth-of-type(4) .project-name { color: #FB923C !important; }
+html[data-theme="playful"] .project:nth-of-type(5) .project-name { color: #EC4899 !important; }
+html[data-theme="playful"] .project:nth-of-type(6) .project-name { color: #22C55E !important; }
+
+/* Index - essay title */
+html[data-theme="playful"] .essay-title {
+  text-decoration: underline wavy var(--accent);
+  border-bottom: none;
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+}
+
+/* Essay pages - header */
+html[data-theme="playful"] .essay-header {
+  border-bottom: 2px dashed #FFBAB3;
+}
+html[data-theme="playful"] .essay-header h1 {
+  font-family: 'Caveat', cursive;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #FF6B6B;
+}
+html[data-theme="playful"] .essay-header h1::after {
+  content: ' ✦';
+  color: #4ECDC4;
+  font-size: 0.7em;
+  vertical-align: middle;
+}
+
+/* Decorative cluster before essay body */
+html[data-theme="playful"] .essay-body::before {
+  content: '✿  ✦  ✿';
+  display: block;
+  text-align: right;
+  color: #FFBAB3;
+  font-size: 0.7rem;
+  letter-spacing: 6px;
+  margin-bottom: 28px;
+}
+
+/* Rotating h2 colours in Caveat */
+html[data-theme="playful"] .essay-body h2 {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-top: 48px;
+}
+html[data-theme="playful"] .essay-body h2:nth-of-type(1) { color: #FF6B6B; }
+html[data-theme="playful"] .essay-body h2:nth-of-type(2) { color: #4ECDC4; }
+html[data-theme="playful"] .essay-body h2:nth-of-type(3) { color: #A855F7; }
+html[data-theme="playful"] .essay-body h2:nth-of-type(4) { color: #FB923C; }
+html[data-theme="playful"] .essay-body h2:nth-of-type(5) { color: #EC4899; }
+html[data-theme="playful"] .essay-body h2:nth-of-type(6) { color: #22C55E; }
+
+/* Wavy underline on essay links */
+html[data-theme="playful"] .essay-body a {
+  text-decoration: underline wavy #FF6B6B;
+  border-bottom: none;
+}
+
+/* Pullquote */
+html[data-theme="playful"] .pullquote {
+  border-left-color: #A855F7;
+  color: #A855F7 !important;
+}
+
+/* TOC */
+html[data-theme="playful"] .toc a.active {
+  color: #FF6B6B;
+  border-left-color: #FF6B6B;
+}
+html[data-theme="playful"] .toc-label { color: #FF6B6B; }
+
+
+/* ── Loud ─────────────────────────────────────── */
+html[data-theme="loud"] {
+  --bg:     #0D0D0D;
+  --text:   #F0F0F0;
+  --muted:  #666666;
+  --accent: #FFE600;
+  --rule:   #252525;
+}
+
+/* Thick yellow nav border */
+html[data-theme="loud"] nav {
+  border-bottom: 3px solid var(--accent);
+}
+
+/* Index - huge bold section headings */
+html[data-theme="loud"] .page header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* Index - projects with yellow left bar, no dividers */
+html[data-theme="loud"] .project {
+  border-top: none;
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
+}
+html[data-theme="loud"] .project:last-of-type { border-bottom: none; }
+
+html[data-theme="loud"] .project-name {
+  color: var(--accent) !important;
+  text-decoration-color: rgba(255, 230, 0, 0.3) !important;
+}
+html[data-theme="loud"] .project-name:hover {
+  text-decoration-color: var(--accent) !important;
+}
+
+/* Index - timeline */
+html[data-theme="loud"] .timeline .years { color: var(--accent); }
+
+/* Index - essay title */
+html[data-theme="loud"] .essay-title:hover { color: var(--accent); }
+
+/* Essay pages - giant ghost quotation mark */
+html[data-theme="loud"] .essay-header { position: relative; }
+html[data-theme="loud"] .essay-header::before {
+  content: '\201C';
+  position: absolute;
+  top: -10px;
+  left: -24px;
+  font-size: 10rem;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.12;
+  font-family: Georgia, serif;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Big bold h1 with yellow underline */
+html[data-theme="loud"] .essay-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 8px;
+  text-decoration-thickness: 4px;
+}
+
+/* Uppercase tracked h2 */
+html[data-theme="loud"] .essay-body h2 {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-top: 64px;
+}
+
+/* Yellow links */
+html[data-theme="loud"] .essay-body a {
+  color: var(--accent);
+  border-bottom-color: rgba(255, 230, 0, 0.35);
+}
+
+/* Pullquote */
+html[data-theme="loud"] .pullquote {
+  border-left-color: var(--accent);
+  color: var(--accent) !important;
+}
+
+/* TOC */
+html[data-theme="loud"] .toc a.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+html[data-theme="loud"] .toc-label { color: var(--accent); }
+
+
+/* ================================================
+   Playful — background blobs
+   ================================================ */
+
+html[data-theme="playful"] body::before {
+  content: '';
+  position: fixed;
+  top: -100px;
+  right: -100px;
+  width: 420px;
+  height: 420px;
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  background: linear-gradient(135deg,
+    rgba(255, 107, 107, 0.18),
+    rgba(78, 205, 196, 0.14),
+    rgba(168, 85, 247, 0.12));
+  pointer-events: none;
+  z-index: 0;
+}
+
+html[data-theme="playful"] body::after {
+  content: '';
+  position: fixed;
+  bottom: -100px;
+  left: -100px;
+  width: 360px;
+  height: 360px;
+  border-radius: 40% 60% 30% 70% / 60% 40% 70% 30%;
+  background: linear-gradient(135deg,
+    rgba(251, 146, 60, 0.15),
+    rgba(34, 197, 94, 0.12),
+    rgba(78, 205, 196, 0.14));
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ================================================
+   Loud — background geometry
+   ================================================ */
+
+html[data-theme="loud"] body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 280px 280px 0;
+  border-color: transparent rgba(255, 230, 0, 0.07) transparent transparent;
+  pointer-events: none;
+  z-index: 0;
+}
+
+html[data-theme="loud"] body::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 230, 0, 0.5) 30%,
+    rgba(255, 230, 0, 0.5) 70%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ================================================
+   Theme Picker — floating icon
+   ================================================ */
+
+.theme-picker {
+  position: relative;
+  z-index: 101;
+}
+
+.theme-tab {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+  display: inline;
+}
+
+.theme-tab:hover,
+.theme-picker.open .theme-tab {
+  color: var(--text);
+}
+
+/* Dropdown — opens downward */
+.theme-options {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  min-width: 120px;
+}
+
+.theme-picker.open .theme-options { display: flex; }
+
+.swatch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  transition: color 0.15s, background 0.15s;
+  text-align: left;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.swatch:last-child { border-bottom: none; }
+.swatch:hover      { color: var(--text); }
+.swatch.active     { color: var(--text); background: var(--rule); }
+
+.swatch::before {
+  content: '';
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.swatch[data-theme="simple"]::before  { background: #C8BEB4; }
+.swatch[data-theme="playful"]::before { background: conic-gradient(#FF6B6B 0deg, #4ECDC4 90deg, #A855F7 180deg, #FB923C 270deg, #FF6B6B 360deg); }
+.swatch[data-theme="loud"]::before    { background: #FFE600; }
+
+/* Mobile theme row */
+.mobile-theme-row {
+  display: flex;
+  gap: 4px;
+}
+
+.mobile-theme-row .swatch {
+  width: auto;
+  border-bottom: none;
+  font-size: 0.78rem;
+  padding: 6px 12px;
+  border-radius: 4px;
+}

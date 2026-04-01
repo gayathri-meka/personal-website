@@ -259,11 +259,14 @@
 
     @media (max-width: 600px) {
       nav { padding: 20px 24px; }
-      nav a:not(.hamburger) { display: none; }
+      nav a:not(.hamburger),
+      nav .theme-picker { display: none; }
       .hamburger { display: flex; }
       .essay-layout { padding: 88px 20px 80px; }
     }
   </style>
+  <link rel="stylesheet" href="../styles/themes.css">
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})()</script>
 </head>
 <body>
 
@@ -271,6 +274,14 @@
     <a href="../index.html">Home</a>
     <a href="../index.html" onclick="sessionStorage.setItem('page','built')">What I've Built</a>
     <a href="../index.html" onclick="sessionStorage.setItem('page','writing')" class="active">Writing</a>
+    <div class="theme-picker" id="themePicker">
+      <button class="theme-tab" id="themeTab" aria-label="Change theme">Theme</button>
+      <div class="theme-options">
+        <button class="swatch" data-theme="simple">simple</button>
+        <button class="swatch" data-theme="playful">playful</button>
+        <button class="swatch" data-theme="loud">loud</button>
+      </div>
+    </div>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -280,56 +291,43 @@
     <a href="../index.html" onclick="toggleMenu()">Home</a>
     <a href="../index.html" onclick="sessionStorage.setItem('page','built'); toggleMenu()">What I've Built</a>
     <a href="../index.html" onclick="sessionStorage.setItem('page','writing'); toggleMenu()" class="active">Writing</a>
+    <div class="mobile-theme-row">
+      <button class="swatch" data-theme="simple">simple</button>
+      <button class="swatch" data-theme="playful">playful</button>
+      <button class="swatch" data-theme="loud">loud</button>
+    </div>
   </div>
 
   <div class="essay-layout">
 
-    <aside class="toc" aria-label="Table of contents">
-      <p class="toc-label">Contents</p>
-      <ol>
-        <li><a href="#object-permanence">Object permanence</a></li>
-        <li><a href="#rupture-and-repair">Rupture and repair</a></li>
-        <li><a href="#vatsalya">Vatsalya bhava</a></li>
-        <li><a href="#the-room">The room</a></li>
-      </ol>
-      <a class="toc-back" href="../index.html" onclick="sessionStorage.setItem('page','writing')">&#8592; All essays</a>
-    </aside>
-
     <article>
       <header class="essay-header">
         <h1>I will come back</h1>
-        <p class="essay-subtitle">On attachment, absence, and the thing I need to keep hearing</p>
       </header>
 
       <div class="essay-body">
 
-        <p>He cries when I leave. Not a soft, confused cry &mdash; a vigorous, full-bodied protest that sounds like something is truly wrong. One day he protested in the car seat. I couldn't stop immediately. When I eventually did, and picked him up, he went quiet. Stopped making eye contact. The first time I saw that silence, I thought I had broken something.</p>
+        <p>He cries when I leave. Not a soft, confused cry - a vigorous, full-bodied protest that sounds like something is truly wrong. One day he protested in the car seat. I couldn't stop immediately. When I eventually did, and picked him up, he went quiet. Stopped making eye contact. The first time I saw that silence, I thought I had broken something.</p>
 
-        <h2 id="object-permanence">Object permanence</h2>
-
-        <p>Around seven months, a baby's brain develops the capacity for object permanence &mdash; the knowledge that things exist even when they can't be seen. It sounds like a small milestone, but it isn't. It means he now knows I exist when I'm gone. He holds me in his mind. But his mind has no concept of time, no framework for return. He knows I exist. He just doesn't know I'll come back.</p>
+        <p>Around seven months, a baby's brain develops the capacity for object permanence, the knowledge that things exist even when they can't be seen. It sounds like a small milestone, but it isn't. It means he now knows I exist when I'm gone. He holds me in his mind. But his mind has no concept of time, no framework for return. He knows I exist. He just doesn't know I'll come back.</p>
 
         <p>The crying is his whole self saying: <em>you matter, and I don't know if this ends.</em></p>
 
-        <h2 id="rupture-and-repair">Rupture and repair</h2>
+        <p>What I didn't expect is that this is also, precisely, the mechanism by which he will become secure. Not through my continuous presence, that is not sustainable. But through repetition. Through rupture and repair, over and over, until the pattern becomes knowledge. Each time I leave and return, I am teaching him something his mind cannot yet hold abstractly: <em>she comes back.</em> He cannot understand the concept of time. But he can accumulate evidence. Goodbye after goodbye, return after return, the body begins to believe what the mind cannot yet grasp - that love is not a finite thing, that absence is not abandonment, that the one who leaves is also the one who returns.</p>
 
-        <p>What I didn't expect is that this is also, precisely, the mechanism by which he will become secure. Not through my continuous presence &mdash; that is not sustainable. But through repetition. Through rupture and repair, over and over, until the pattern becomes knowledge. Each time I leave and return, I am teaching him something his mind cannot yet hold abstractly: <em>she comes back.</em> He cannot understand the concept of time. But he can accumulate evidence. Goodbye after goodbye, return after return, the body begins to believe what the mind cannot yet grasp &mdash; that love is not a finite thing, that absence is not abandonment, that the one who leaves is also the one who returns.</p>
+        <p>In the Bhakti tradition, <em>vatsalya bhava</em>, the devotional love between mother and child, is considered one of the most intimate forms of relating to the divine. Krishna and Yashoda are the archetypal image: the crying child, the mother who returns, the reunion that is itself sacred. Ayurveda's ancient texts spoke of the mother's presence - her smell, her voice, her warmth - as medicine. Not metaphorically. As literal regulators of the child's constitution. The Upanishads offer that the nature of the self is <em>ananda</em>, bliss, and that the pull toward the source of love is not weakness but the deepest intelligence of consciousness.</p>
 
-        <h2 id="vatsalya">Vatsalya bhava</h2>
+        <p>The vigorous, full-hearted protest - the crying that sounds like pain - is evidence that the attachment is working. His distress is his love made audible.</p>
 
-        <p>In the Bhakti tradition, <em>vatsalya bhava</em> &mdash; the devotional love between mother and child &mdash; is considered one of the most intimate forms of relating to the divine. Krishna and Yashoda are the archetypal image: the crying child, the mother who returns, the reunion that is itself sacred. Ayurveda's ancient texts spoke of the mother's presence &mdash; her smell, her voice, her warmth &mdash; as medicine. Not metaphorically. As literal regulators of the child's constitution. The Upanishads offer that the nature of the self is <em>ananda</em>, bliss, and that the pull toward the source of love is not weakness but the deepest intelligence of consciousness.</p>
-
-        <p>The vigorous, full-hearted protest &mdash; the crying that sounds like pain &mdash; is evidence that the attachment is working. His distress is his love made audible.</p>
-
-        <h2 id="the-room">The room</h2>
-
-        <p>Which makes it all the more difficult for me to walk away and sit in this room. This room which has ironically become the image of my ambition &mdash; a place where I can sit and work, where I try to be more than a "just a mother". And when I sit here, locked in, hearing him cry on the other side, I ask myself why I'm doing this. Why am I going against my natural instinct?</p>
+        <p>Which makes it all the more difficult for me to walk away and sit in this room. This room which has ironically become the image of my ambition, a place where I can sit and work, where I try to be more than a "just a mother". And when I sit here, locked in, hearing him cry on the other side, I ask myself why I'm doing this. Why am I going against my natural instinct?</p>
 
         <p>Then I remind myself again that my continuous presence is not sustainable. Irrespective of whether I'm a working mom or a stay-at-home mom, he needs to learn. Rupture and repair, over and over. For him. For me.</p>
 
-        <p class="pullquote">I am going now. But I will come back.</p>
+        <p>I am going now. But I will come back.</p>
 
       </div>
+
+      <a href="../index.html" onclick="sessionStorage.setItem('page','writing')" style="display:inline-block; margin-top: 56px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; border-top: 1px solid var(--rule); padding-top: 24px; width: 100%; transition: color 0.15s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">&#8592; All essays</a>
     </article>
 
   </div>
@@ -340,30 +338,9 @@
       document.querySelector('.hamburger').classList.toggle('open');
     }
 
-    // Active TOC section on scroll
-    const sections = document.querySelectorAll('.essay-body h2[id]');
-    const tocLinks = document.querySelectorAll('.toc a[href^="#"]');
-
-    function updateActiveToc() {
-      let current = null;
-      sections.forEach(section => {
-        if (section.getBoundingClientRect().top <= 120) current = section.id;
-      });
-      tocLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-      });
-    }
-
-    window.addEventListener('scroll', updateActiveToc, { passive: true });
-    updateActiveToc();
-
-    tocLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        const target = document.getElementById(link.getAttribute('href').slice(1));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-      });
-    });
   </script>
+
+  <script src="../scripts/theme.js"></script>
 
 </body>
 </html>
