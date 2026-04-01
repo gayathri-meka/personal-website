@@ -161,106 +161,95 @@ html[data-theme="playful"] .toc a.active {
 html[data-theme="playful"] .toc-label { color: #FF6B6B; }
 
 
-/* ── Loud ─────────────────────────────────────── */
-html[data-theme="loud"] {
+/* ── Rave ──────────────────────────────────────── */
+html[data-theme="rave"] {
   --bg:     #0D0D0D;
   --text:   #F0F0F0;
   --muted:  #666666;
-  --accent: #FFE600;
-  --rule:   #252525;
+  --accent: #FF2D78;
+  --rule:   #1E1E1E;
 }
 
-/* Thick yellow nav border */
-html[data-theme="loud"] nav {
-  border-bottom: 3px solid var(--accent);
+html[data-theme="rave"] nav {
+  border-bottom: 1px solid #FF2D78;
 }
 
-/* Index - huge bold section headings */
-html[data-theme="loud"] .page header h1 {
+/* Nav links — rotating neon */
+html[data-theme="rave"] nav a:nth-child(1) { color: #FF2D78; }
+html[data-theme="rave"] nav a:nth-child(2) { color: #00E5FF; }
+html[data-theme="rave"] nav a:nth-child(3) { color: #00FF87; }
+
+/* Index - bold headings */
+html[data-theme="rave"] .page header h1 {
   font-size: 2.8rem;
   font-weight: 700;
   letter-spacing: -0.03em;
 }
 
-/* Index - projects with yellow left bar, no dividers */
-html[data-theme="loud"] .project {
+/* Index - projects with neon left bar */
+html[data-theme="rave"] .project {
   border-top: none;
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid;
   padding-left: 20px;
 }
-html[data-theme="loud"] .project:last-of-type { border-bottom: none; }
+html[data-theme="rave"] .project:last-of-type { border-bottom: none; }
+html[data-theme="rave"] .project:nth-of-type(1) { border-left-color: #FF2D78; }
+html[data-theme="rave"] .project:nth-of-type(2) { border-left-color: #00E5FF; }
+html[data-theme="rave"] .project:nth-of-type(3) { border-left-color: #00FF87; }
+html[data-theme="rave"] .project:nth-of-type(4) { border-left-color: #BF5AF2; }
+html[data-theme="rave"] .project:nth-of-type(5) { border-left-color: #FF9500; }
+html[data-theme="rave"] .project:nth-of-type(6) { border-left-color: #FFE600; }
 
-html[data-theme="loud"] .project-name {
-  color: var(--accent) !important;
-  text-decoration-color: rgba(255, 230, 0, 0.3) !important;
-}
-html[data-theme="loud"] .project-name:hover {
-  text-decoration-color: var(--accent) !important;
-}
+html[data-theme="rave"] .project:nth-of-type(1) .project-name { color: #FF2D78 !important; }
+html[data-theme="rave"] .project:nth-of-type(2) .project-name { color: #00E5FF !important; }
+html[data-theme="rave"] .project:nth-of-type(3) .project-name { color: #00FF87 !important; }
+html[data-theme="rave"] .project:nth-of-type(4) .project-name { color: #BF5AF2 !important; }
+html[data-theme="rave"] .project:nth-of-type(5) .project-name { color: #FF9500 !important; }
+html[data-theme="rave"] .project:nth-of-type(6) .project-name { color: #FFE600 !important; }
 
 /* Index - timeline */
-html[data-theme="loud"] .timeline .years { color: var(--accent); }
+html[data-theme="rave"] .timeline .years { color: #00E5FF; }
 
 /* Index - essay title */
-html[data-theme="loud"] .essay-title:hover { color: var(--accent); }
+html[data-theme="rave"] .essay-title:hover { color: var(--accent); }
 
-/* Essay pages - giant ghost quotation mark */
-html[data-theme="loud"] .essay-header { position: relative; }
-html[data-theme="loud"] .essay-header::before {
-  content: '\201C';
-  position: absolute;
-  top: -10px;
-  left: -24px;
-  font-size: 10rem;
-  line-height: 1;
-  color: var(--accent);
-  opacity: 0.12;
-  font-family: Georgia, serif;
-  pointer-events: none;
-  user-select: none;
-}
-
-/* Big bold h1 with yellow underline */
-html[data-theme="loud"] .essay-header h1 {
+/* Essay pages */
+html[data-theme="rave"] .essay-header h1 {
   font-size: 3rem;
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
   text-decoration: underline;
-  text-decoration-color: var(--accent);
+  text-decoration-color: #FF2D78;
   text-underline-offset: 8px;
   text-decoration-thickness: 4px;
 }
 
-/* Uppercase tracked h2 */
-html[data-theme="loud"] .essay-body h2 {
+html[data-theme="rave"] .essay-body h2 {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: var(--accent);
+  color: #00E5FF;
   margin-top: 64px;
 }
 
-/* Yellow links */
-html[data-theme="loud"] .essay-body a {
-  color: var(--accent);
-  border-bottom-color: rgba(255, 230, 0, 0.35);
+html[data-theme="rave"] .essay-body a {
+  color: #FF2D78;
+  border-bottom-color: rgba(255, 45, 120, 0.35);
 }
 
-/* Pullquote */
-html[data-theme="loud"] .pullquote {
-  border-left-color: var(--accent);
-  color: var(--accent) !important;
+html[data-theme="rave"] .pullquote {
+  border-left-color: #BF5AF2;
+  color: #BF5AF2 !important;
 }
 
-/* TOC */
-html[data-theme="loud"] .toc a.active {
-  color: var(--accent);
-  border-left-color: var(--accent);
+html[data-theme="rave"] .toc a.active {
+  color: #FF2D78;
+  border-left-color: #FF2D78;
 }
-html[data-theme="loud"] .toc-label { color: var(--accent); }
+html[data-theme="rave"] .toc-label { color: #FF2D78; }
 
 
 /* ================================================
@@ -300,10 +289,10 @@ html[data-theme="playful"] body::after {
 }
 
 /* ================================================
-   Loud — background geometry
+   Rave — background geometry (neon corner accents)
    ================================================ */
 
-html[data-theme="loud"] body::before {
+html[data-theme="rave"] body::before {
   content: '';
   position: fixed;
   top: 0;
@@ -312,29 +301,31 @@ html[data-theme="loud"] body::before {
   height: 0;
   border-style: solid;
   border-width: 0 280px 280px 0;
-  border-color: transparent rgba(255, 230, 0, 0.07) transparent transparent;
+  border-color: transparent rgba(255, 45, 120, 0.08) transparent transparent;
   pointer-events: none;
   z-index: 0;
 }
 
-html[data-theme="loud"] body::after {
+html[data-theme="rave"] body::after {
   content: '';
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(255, 230, 0, 0.5) 30%,
-    rgba(255, 230, 0, 0.5) 70%,
+    #FF2D78 20%,
+    #00E5FF 50%,
+    #00FF87 80%,
     transparent 100%);
   pointer-events: none;
   z-index: 0;
+  opacity: 0.7;
 }
 
 /* ================================================
-   Theme Picker — floating icon
+   Theme Picker — nav tab
    ================================================ */
 
 .theme-picker {
@@ -416,7 +407,7 @@ html[data-theme="loud"] body::after {
 
 .swatch[data-theme="simple"]::before  { background: #C8BEB4; }
 .swatch[data-theme="playful"]::before { background: conic-gradient(#FF6B6B 0deg, #4ECDC4 90deg, #A855F7 180deg, #FB923C 270deg, #FF6B6B 360deg); }
-.swatch[data-theme="loud"]::before    { background: #FFE600; }
+.swatch[data-theme="rave"]::before    { background: conic-gradient(#FF2D78 0deg, #00E5FF 120deg, #00FF87 240deg, #FF2D78 360deg); }
 
 /* Mobile theme row */
 .mobile-theme-row {

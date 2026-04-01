@@ -65,21 +65,21 @@
     el.style.cssText = 'position:fixed;top:63px;right:0;width:240px;height:240px;pointer-events:none;z-index:0;';
     el.innerHTML = '<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" fill="none">'
       // filled corner triangle
-      + '<polygon points="240,0 240,240 0,0" fill="#FFE600" opacity="0.05"/>'
+      + '<polygon points="240,0 240,240 0,0" fill="#000" opacity="0.04"/>'
       // diagonal accent lines from top-right
-      + '<line x1="60" y1="0" x2="240" y2="180" stroke="#FFE600" stroke-width="1" opacity="0.1"/>'
-      + '<line x1="100" y1="0" x2="240" y2="140" stroke="#FFE600" stroke-width="1" opacity="0.09"/>'
-      + '<line x1="140" y1="0" x2="240" y2="100" stroke="#FFE600" stroke-width="1.5" opacity="0.12"/>'
-      + '<line x1="180" y1="0" x2="240" y2="60" stroke="#FFE600" stroke-width="1.5" opacity="0.1"/>'
-      + '<line x1="0" y1="0" x2="240" y2="240" stroke="#FFE600" stroke-width="0.75" opacity="0.07"/>'
+      + '<line x1="60" y1="0" x2="240" y2="180" stroke="#000" stroke-width="1" opacity="0.07"/>'
+      + '<line x1="100" y1="0" x2="240" y2="140" stroke="#000" stroke-width="1" opacity="0.06"/>'
+      + '<line x1="140" y1="0" x2="240" y2="100" stroke="#000" stroke-width="1.5" opacity="0.08"/>'
+      + '<line x1="180" y1="0" x2="240" y2="60" stroke="#000" stroke-width="1.5" opacity="0.07"/>'
+      + '<line x1="0" y1="0" x2="240" y2="240" stroke="#000" stroke-width="0.75" opacity="0.05"/>'
       // circle accent
-      + '<circle cx="195" cy="45" r="36" stroke="#FFE600" stroke-width="1.5" opacity="0.18" fill="none"/>'
-      + '<circle cx="195" cy="45" r="5" fill="#FFE600" opacity="0.35"/>'
+      + '<circle cx="195" cy="45" r="36" stroke="#000" stroke-width="1.5" opacity="0.12" fill="none"/>'
+      + '<circle cx="195" cy="45" r="5" fill="#000" opacity="0.2"/>'
       // outer ring
-      + '<circle cx="195" cy="45" r="52" stroke="#FFE600" stroke-width="0.75" opacity="0.08" fill="none"/>'
+      + '<circle cx="195" cy="45" r="52" stroke="#000" stroke-width="0.75" opacity="0.06" fill="none"/>'
       // corner bracket lines
-      + '<line x1="210" y1="0" x2="240" y2="0" stroke="#FFE600" stroke-width="3" opacity="0.35"/>'
-      + '<line x1="240" y1="0" x2="240" y2="30" stroke="#FFE600" stroke-width="3" opacity="0.35"/>'
+      + '<line x1="210" y1="0" x2="240" y2="0" stroke="#000" stroke-width="3" opacity="0.25"/>'
+      + '<line x1="240" y1="0" x2="240" y2="30" stroke="#000" stroke-width="3" opacity="0.25"/>'
       + '</svg>';
     document.body.appendChild(el);
 
@@ -89,13 +89,48 @@
       el2.id = 'theme-illustration-2';
       el2.style.cssText = 'position:fixed;bottom:0;left:0;width:200px;height:200px;pointer-events:none;z-index:0;';
       el2.innerHTML = '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">'
-        + '<polygon points="0,200 200,200 0,0" fill="#FFE600" opacity="0.04"/>'
-        + '<line x1="0" y1="140" x2="60" y2="200" stroke="#FFE600" stroke-width="1.5" opacity="0.12"/>'
-        + '<line x1="0" y1="100" x2="100" y2="200" stroke="#FFE600" stroke-width="1" opacity="0.1"/>'
-        + '<line x1="0" y1="60" x2="140" y2="200" stroke="#FFE600" stroke-width="1" opacity="0.08"/>'
+        + '<polygon points="0,200 200,200 0,0" fill="#000" opacity="0.03"/>'
+        + '<line x1="0" y1="140" x2="60" y2="200" stroke="#000" stroke-width="1.5" opacity="0.08"/>'
+        + '<line x1="0" y1="100" x2="100" y2="200" stroke="#000" stroke-width="1" opacity="0.07"/>'
+        + '<line x1="0" y1="60" x2="140" y2="200" stroke="#000" stroke-width="1" opacity="0.05"/>'
         // corner bracket
-        + '<line x1="0" y1="170" x2="0" y2="200" stroke="#FFE600" stroke-width="3" opacity="0.35"/>'
-        + '<line x1="0" y1="200" x2="30" y2="200" stroke="#FFE600" stroke-width="3" opacity="0.35"/>'
+        + '<line x1="0" y1="170" x2="0" y2="200" stroke="#000" stroke-width="3" opacity="0.25"/>'
+        + '<line x1="0" y1="200" x2="30" y2="200" stroke="#000" stroke-width="3" opacity="0.25"/>'
+        + '</svg>';
+      document.body.appendChild(el2);
+    }
+  }
+
+  function injectDarkIllustration() {
+    removeIllustrations();
+    var el = document.createElement('div');
+    el.id = 'theme-illustration';
+    el.style.cssText = 'position:fixed;top:63px;right:0;width:240px;height:240px;pointer-events:none;z-index:0;';
+    el.innerHTML = '<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" fill="none">'
+      + '<polygon points="240,0 240,240 0,0" fill="#FF2D78" opacity="0.04"/>'
+      + '<line x1="60" y1="0" x2="240" y2="180" stroke="#FF2D78" stroke-width="1" opacity="0.12"/>'
+      + '<line x1="100" y1="0" x2="240" y2="140" stroke="#00E5FF" stroke-width="1" opacity="0.1"/>'
+      + '<line x1="140" y1="0" x2="240" y2="100" stroke="#00FF87" stroke-width="1.5" opacity="0.12"/>'
+      + '<line x1="180" y1="0" x2="240" y2="60" stroke="#FF2D78" stroke-width="1.5" opacity="0.1"/>'
+      + '<circle cx="195" cy="45" r="36" stroke="#00E5FF" stroke-width="1.5" opacity="0.2" fill="none"/>'
+      + '<circle cx="195" cy="45" r="5" fill="#FF2D78" opacity="0.5"/>'
+      + '<circle cx="195" cy="45" r="52" stroke="#00FF87" stroke-width="0.75" opacity="0.1" fill="none"/>'
+      + '<line x1="210" y1="0" x2="240" y2="0" stroke="#FF2D78" stroke-width="3" opacity="0.5"/>'
+      + '<line x1="240" y1="0" x2="240" y2="30" stroke="#FF2D78" stroke-width="3" opacity="0.5"/>'
+      + '</svg>';
+    document.body.appendChild(el);
+
+    if (!document.getElementById('theme-illustration-2')) {
+      var el2 = document.createElement('div');
+      el2.id = 'theme-illustration-2';
+      el2.style.cssText = 'position:fixed;bottom:0;left:0;width:200px;height:200px;pointer-events:none;z-index:0;';
+      el2.innerHTML = '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">'
+        + '<polygon points="0,200 200,200 0,0" fill="#00E5FF" opacity="0.03"/>'
+        + '<line x1="0" y1="140" x2="60" y2="200" stroke="#00FF87" stroke-width="1.5" opacity="0.15"/>'
+        + '<line x1="0" y1="100" x2="100" y2="200" stroke="#00E5FF" stroke-width="1" opacity="0.12"/>'
+        + '<line x1="0" y1="60" x2="140" y2="200" stroke="#FF2D78" stroke-width="1" opacity="0.1"/>'
+        + '<line x1="0" y1="170" x2="0" y2="200" stroke="#00E5FF" stroke-width="3" opacity="0.5"/>'
+        + '<line x1="0" y1="200" x2="30" y2="200" stroke="#00E5FF" stroke-width="3" opacity="0.5"/>'
         + '</svg>';
       document.body.appendChild(el2);
     }
@@ -116,6 +151,8 @@
       injectPlayfulIllustration();
     } else if (theme === 'loud') {
       injectLoudIllustration();
+    } else if (theme === 'rave') {
+      injectDarkIllustration();
     } else {
       removeAllIllustrations();
     }
@@ -132,6 +169,7 @@
     // Inject illustrations for current theme on load
     if (current === 'playful') injectPlayfulIllustration();
     else if (current === 'loud') injectLoudIllustration();
+    else if (current === 'rave') injectDarkIllustration();
 
     var pickerEl = document.getElementById('themePicker');
     var tabEl    = document.getElementById('themeTab');
